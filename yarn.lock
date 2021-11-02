@@ -298,6 +298,15 @@
     "@babel/helper-plugin-utils" "^7.14.5"
     "@babel/plugin-syntax-class-static-block" "^7.14.5"
 
+"@babel/plugin-proposal-decorators@^7.16.0":
+  version "7.16.0"
+  resolved "http://pripub.hljnbw.cn:8019/@babel%2fplugin-proposal-decorators/-/plugin-proposal-decorators-7.16.0.tgz#515db5f6891611c0d176b63ede0844fbd9be797b"
+  integrity sha1-UV219okWEcDRdrY+3ghE+9m+eXs=
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.16.0"
+    "@babel/helper-plugin-utils" "^7.14.5"
+    "@babel/plugin-syntax-decorators" "^7.16.0"
+
 "@babel/plugin-proposal-dynamic-import@^7.16.0":
   version "7.16.0"
   resolved "http://pripub.hljnbw.cn:8019/@babel%2fplugin-proposal-dynamic-import/-/plugin-proposal-dynamic-import-7.16.0.tgz#783eca61d50526202f9b296095453977e88659f1"
@@ -418,6 +427,13 @@
   version "7.14.5"
   resolved "http://pripub.hljnbw.cn:8019/@babel%2fplugin-syntax-class-static-block/-/plugin-syntax-class-static-block-7.14.5.tgz#195df89b146b4b78b3bf897fd7a257c84659d406"
   integrity sha512-b+YyPmr6ldyNnM6sqYeMWE+bgJcJpO6yS4QD7ymxgH34GBPNDM/THBh8iunyvKIZztiwLH4CJZ0RxTk9emgpjw==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.14.5"
+
+"@babel/plugin-syntax-decorators@^7.16.0":
+  version "7.16.0"
+  resolved "http://pripub.hljnbw.cn:8019/@babel%2fplugin-syntax-decorators/-/plugin-syntax-decorators-7.16.0.tgz#eb8d811cdd1060f6ac3c00956bf3f6335505a32f"
+  integrity sha1-642BHN0QYPasPACVa/P2M1UFoy8=
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
 
@@ -1010,10 +1026,36 @@
   resolved "http://pripub.hljnbw.cn:8019/@types%2fnode/-/node-16.11.6.tgz#6bef7a2a0ad684cf6e90fcfe31cecabd9ce0a3ae"
   integrity sha1-a+96KgrWhM9ukPz+Mc7KvZzgo64=
 
+"@types/prop-types@*":
+  version "15.7.4"
+  resolved "http://pripub.hljnbw.cn:8019/@types%2fprop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
+  integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
+
+"@types/react-dom@^17.0.10":
+  version "17.0.10"
+  resolved "http://pripub.hljnbw.cn:8019/@types%2freact-dom/-/react-dom-17.0.10.tgz#d6972ec018d23cf22b99597f1289343d99ea9d9d"
+  integrity sha1-1pcuwBjSPPIrmVl/Eok0PZnqnZ0=
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^17.0.33":
+  version "17.0.33"
+  resolved "http://pripub.hljnbw.cn:8019/@types%2freact/-/react-17.0.33.tgz#e01ae3de7613dac1094569880bb3792732203ad5"
+  integrity sha1-4Brj3nYT2sEJRWmIC7N5JzIgOtU=
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
 "@types/retry@^0.12.0":
   version "0.12.1"
   resolved "http://pripub.hljnbw.cn:8019/@types%2fretry/-/retry-0.12.1.tgz#d8f1c0d0dc23afad6dc16a9e993a0865774b4065"
   integrity sha512-xoDlM2S4ortawSWORYqsdU+2rxdh4LRW9ytc3zmT37RIKQh6IHyKwwtKhKis9ah8ol07DCkZxPt8BBvPjC6v4g==
+
+"@types/scheduler@*":
+  version "0.16.2"
+  resolved "http://pripub.hljnbw.cn:8019/@types%2fscheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
+  integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
@@ -1645,6 +1687,11 @@ cssesc@^3.0.0:
   version "3.0.0"
   resolved "http://pripub.hljnbw.cn:8019/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
+
+csstype@^3.0.2:
+  version "3.0.9"
+  resolved "http://pripub.hljnbw.cn:8019/csstype/-/csstype-3.0.9.tgz#6410af31b26bd0520933d02cbc64fce9ce3fbf0b"
+  integrity sha1-ZBCvMbJr0FIJM9AsvGT86c4/vws=
 
 debug@2.6.9:
   version "2.6.9"
