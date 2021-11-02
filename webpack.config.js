@@ -29,35 +29,12 @@ const config = {
   ],
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        include: path.resolve(__dirname, 'src'),
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
-            }
-          }
-        ]
-      },
-      {
-        test: /\.less$/,
-        include: path.resolve(__dirname, 'src'),
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'less-loader' },
-        ]
-      },
-      {
-        test: /\.(ts|tsx)$/,
-        include: path.resolve(__dirname, 'src'),
-        use: ['ts-loader']
-      }
+      require('./loaders/js-loader'),
+      require('./loaders/ts-loader'),
+      require('./loaders/less-loader'),
     ]
   },
-  stats: 'summary',
+  // stats: 'summary',
 }
 
 module.exports = config;
