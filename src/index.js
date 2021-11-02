@@ -1,7 +1,18 @@
+import React from 'react'
+import ReactDOM from 'react-dom';
+import './style.less';
 
-const gcd = (a, b) => {
-  if (a % b === 0) return b;
-  return gcd(b, a % b);
+const App = () => {
+  return (
+    <React.StrictMode>
+      <div className="app">
+        hello, this is react demo...
+      </div>
+    </React.StrictMode>
+  )
 }
 
-console.log(gcd(28, 100));
+ReactDOM.render(
+  <App />,
+  document.querySelector('#root'),
+)
