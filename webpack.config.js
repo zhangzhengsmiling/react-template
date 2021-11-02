@@ -7,9 +7,12 @@ const config = {
   devServer: {
     host: '127.0.0.1',
     port: 8000,
+    client: {
+      logging: 'none',
+    }
   },
   entry: {
-    app: path.resolve(__dirname, './src/index.js'),
+    app: path.resolve(__dirname, './src/index.tsx'),
   },
   output: {
     path: path.resolve(__dirname, './build'),
@@ -46,9 +49,15 @@ const config = {
           { loader: 'css-loader' },
           { loader: 'less-loader' },
         ]
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        include: path.resolve(__dirname, 'src'),
+        use: ['ts-loader']
       }
     ]
-  }
+  },
+  stats: 'summary',
 }
 
 module.exports = config;
