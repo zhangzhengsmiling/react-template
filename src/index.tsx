@@ -1,15 +1,16 @@
 import React, { useCallback } from 'react'
 import ReactDOM from 'react-dom';
-import './style.less'
+import styles from './style.less';
 
 const App = () => {
 
   const handleClick = useCallback(() => {
     alert('clicked...')
-  }, [])
+  }, []);
+
   return (
     <React.StrictMode>
-      <div className="app">
+      <div className={styles.app}>
         hello, this is react demo...
         <p>
           <button onClick={handleClick}>click me...</button>

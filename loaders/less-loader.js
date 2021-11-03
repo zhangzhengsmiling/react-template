@@ -6,7 +6,13 @@ const loader = {
   include: path.resolve(cwd, 'src'),
   use: [
     { loader: 'style-loader' },
-    { loader: 'css-loader' },
+    {
+      loader: 'css-loader',
+      options: {
+        modules: true,
+      }
+    },
+    { loader: 'postcss-loader'},
     { loader: 'less-loader' },
   ]
 }

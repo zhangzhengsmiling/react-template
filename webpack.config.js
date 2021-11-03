@@ -34,7 +34,7 @@ const config = {
       require('./loaders/less-loader'),
     ]
   },
-  // stats: 'summary',
+  stats: 'minimal',
 }
 
 module.exports = config;
