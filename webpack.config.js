@@ -31,7 +31,10 @@ const config = {
     rules: [
       require('./loaders/js-loader'),
       require('./loaders/ts-loader'),
-      require('./loaders/less-loader'),
+      require('./loaders/less-loader').lessModuleLoader,
+      require('./loaders/less-loader').lessLoader,
+      require('./loaders/sass-loader').sassModuleLoader,
+      require('./loaders/sass-loader').sassLoader,
     ]
   },
   stats: 'minimal',

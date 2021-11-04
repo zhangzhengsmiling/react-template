@@ -2,19 +2,19 @@ const path = require('path');
 const cwd = process.cwd();
 
 const loader = {
-  test: /(?<!\.module)\.less/,
+  test: /(?<!\.module)\.(scss|sass)/,
   include: path.resolve(cwd, 'src'),
   use: [
     { loader: 'style-loader' },
     {
       loader: 'css-loader'
     },
-    { loader: 'less-loader' },
+    { loader: 'sass-loader' },
   ]
 }
 
-const lessModuleLoader = {
-  test: /\.module\.less$/,
+const sassModuleLoader = {
+  test: /\.module\.(sass|scss)$/,
   include: path.resolve(cwd, 'src'),
   use: [
     { loader: 'style-loader' },
@@ -24,11 +24,11 @@ const lessModuleLoader = {
         modules: true,
       }
     },
-    { loader: 'less-loader' },
+    { loader: 'sass-loader' },
   ]
 }
 
 module.exports = {
-  lessLoader: loader,
-  lessModuleLoader,
+  sassLoader: loader,
+  sassModuleLoader,
 };

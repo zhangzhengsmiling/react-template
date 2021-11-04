@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react'
 import ReactDOM from 'react-dom';
-import styles from './style.less';
+import styles from './a.module.less'
+import './a.less';
+
 
 const App = () => {
 
@@ -15,6 +17,9 @@ const App = () => {
         <p>
           <button onClick={handleClick}>click me...</button>
         </p>
+      </div>
+      <div className="a">
+        aaa
       </div>
     </React.StrictMode>
   )
