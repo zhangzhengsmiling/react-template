@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const cwd = process.cwd();
 
 const config = {
   mode: 'development',
@@ -27,6 +28,12 @@ const config = {
     }),
     new CleanWebpackPlugin(),
   ],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', 'jsx', '.html', '.json'],
+    alias: {
+      "@": path.resolve(cwd, './src')
+    }
+  },
   module: {
     rules: [
       require('./loaders/js-loader'),
@@ -35,14 +42,8 @@ const config = {
       require('./loaders/less-loader').lessLoader,
       require('./loaders/sass-loader').sassModuleLoader,
       require('./loaders/sass-loader').sassLoader,
-      {
-        test: /\.(woff|woff2|eot|ttf|svg)$/,
-        use: ['url-loader?limit=100000']
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: ['file-loader']
-      }
+      require('./loaders/font-loader'),
+      require('./loaders/img-loader'),
     ]
   },
   stats: 'minimal',

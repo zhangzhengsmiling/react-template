@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import ReactDOM from 'react-dom';
 import styles from './a.module.less'
 import './a.less';
-
+import TestPage from '@/pages/TestPage';
 
 const App = () => {
 
@@ -21,6 +21,7 @@ const App = () => {
       <div className="a">
         aaa
       </div>
+      <TestPage></TestPage>
     </React.StrictMode>
   )
 }
