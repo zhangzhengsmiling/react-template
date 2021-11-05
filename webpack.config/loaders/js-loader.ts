@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'path';
 const cwd = process.cwd();
 
 const loader = {
@@ -14,4 +14,4 @@ const loader = {
   ]
 }
 
-module.exports = loader;
+export default loader;

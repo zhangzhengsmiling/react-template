@@ -1,7 +1,7 @@
-const path = require('path');
+import path from 'path';
 const cwd = process.cwd();
 
-const loader = {
+export const lessLoader = {
   test: /(?<!\.module)\.less/,
   include: path.resolve(cwd, 'src'),
   use: [
@@ -13,7 +13,7 @@ const loader = {
   ]
 }
 
-const lessModuleLoader = {
+export const lessModuleLoader = {
   test: /\.module\.less$/,
   include: path.resolve(cwd, 'src'),
   use: [
@@ -27,8 +27,3 @@ const lessModuleLoader = {
     { loader: 'less-loader' },
   ]
 }
-
-module.exports = {
-  lessLoader: loader,
-  lessModuleLoader,
-};

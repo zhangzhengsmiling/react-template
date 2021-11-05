@@ -4,4 +4,4 @@ const loader = {
   use: ['url-loader?limit=100000']
 };
 
-module.exports = loader;
+export default loader;

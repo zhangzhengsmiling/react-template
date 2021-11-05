@@ -1,7 +1,7 @@
-const path = require('path');
+import path from 'path';
 const cwd = process.cwd();
 
-const loader = {
+export const sassLoader = {
   test: /(?<!\.module)\.(scss|sass)/,
   include: path.resolve(cwd, 'src'),
   use: [
@@ -13,7 +13,7 @@ const loader = {
   ]
 }
 
-const sassModuleLoader = {
+export const sassModuleLoader = {
   test: /\.module\.(sass|scss)$/,
   include: path.resolve(cwd, 'src'),
   use: [
@@ -27,8 +27,3 @@ const sassModuleLoader = {
     { loader: 'sass-loader' },
   ]
 }
-
-module.exports = {
-  sassLoader: loader,
-  sassModuleLoader,
-};

@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'path';
 const cwd = process.cwd();
 
 const loader = {
@@ -7,4 +7,4 @@ const loader = {
   use: ['ts-loader']
 }
 
-module.exports = loader;
+export default loader;
