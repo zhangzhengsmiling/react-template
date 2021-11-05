@@ -35,6 +35,14 @@ const config = {
       require('./loaders/less-loader').lessLoader,
       require('./loaders/sass-loader').sassModuleLoader,
       require('./loaders/sass-loader').sassLoader,
+      {
+        test: /\.(woff|woff2|eot|ttf|svg)$/,
+        use: ['url-loader?limit=100000']
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: ['file-loader']
+      }
     ]
   },
   stats: 'minimal',
