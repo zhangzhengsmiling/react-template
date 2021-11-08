@@ -7,14 +7,17 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
     "@types/mini-css-extract-plugin": "^2.4.0",
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@types/webpack": "^5.28.0",
     "babel-loader": "^8.2.3",
+    "cache-loader": "^4.1.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.0",
+    "esbuild-loader": "^2.16.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "less": "^4.1.2",
@@ -32,8 +35,9 @@
     "webpack-dev-server": "^4.4.0"
   },
   "scripts": {
-    "dev": "webpack serve --config ./webpack.config/webpack.config.ts",
-    "build": "webpack --config ./webpack.config/webpack.config.ts"
+    "dev": "webpack serve --config ./webpack.config/webpack.config.ts & tsc --watch",
+    "build": "webpack --config ./webpack.config/webpack.config.ts",
+    "check-types": "tsc"
   },
   "dependencies": {
     "react": "^17.0.2",

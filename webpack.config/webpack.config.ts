@@ -2,6 +2,7 @@ import path from 'path';
 // import fs from 'fs';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { ESBuildPlugin } from 'esbuild-loader';
 import LOADER_JS from './loaders/js-loader';
 import LOADER_TS from './loaders/ts-loader';
 import { lessModuleLoader, lessLoader } from './loaders/less-loader';
@@ -31,7 +32,7 @@ const config = {
     app: path.resolve(cwd, './src/index.tsx'),
   },
   output: {
-    path: path.resolve(cwd, './build'),
+    path: path.resolve(cwd, './build/js'),
     filename: '[name].bundle.js',
   },
   plugins: [
@@ -41,6 +42,7 @@ const config = {
       publicPath: '/',
       filename: 'index.html',
     }),
+    new ESBuildPlugin(),
     new CleanWebpackPlugin(),
   ],
   resolve: {
