@@ -13,6 +13,7 @@
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@types/webpack": "^5.28.0",
+    "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
     "cache-loader": "^4.1.0",
     "clean-webpack-plugin": "^4.0.0",
@@ -22,6 +23,7 @@
     "html-webpack-plugin": "^5.5.0",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
+    "mini-css-extract-plugin": "^2.4.4",
     "postcss-loader": "^6.2.0",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
@@ -41,5 +43,9 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
