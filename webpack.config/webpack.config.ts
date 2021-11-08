@@ -1,4 +1,5 @@
 import path from 'path';
+// import fs from 'fs';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import LOADER_JS from './loaders/js-loader';
@@ -15,9 +16,16 @@ const config = {
   devServer: {
     host: '127.0.0.1',
     port: 8000,
-    client: {
-      logging: 'none',
-    }
+    // host: 'dev.yourdomain.com',
+    // allowedHosts: ['dev.yourdomain.com'],
+    // port: 443,
+    // client: {
+    //   logging: 'none',
+    // },
+    // https: {
+    //   key: fs.readFileSync(path.join(__dirname, './local-ssl/ext.yourdomain.com.key')),
+    //   cert: fs.readFileSync(path.join(__dirname, './local-ssl/ext.yourdomain.com.crt'))
+    // }
   },
   entry: {
     app: path.resolve(cwd, './src/index.tsx'),
