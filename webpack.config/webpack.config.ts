@@ -32,7 +32,7 @@ const config = {
     app: path.resolve(cwd, './src/index.tsx'),
   },
   output: {
-    path: path.resolve(cwd, './build/js'),
+    path: path.resolve(cwd, './build'),
     filename: '[name].bundle.js',
   },
   plugins: [
