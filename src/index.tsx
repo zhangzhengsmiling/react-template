@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom';
 import './a.less';
 import TestPage from '@/pages/TestPage';
@@ -8,9 +8,9 @@ const App = () => {
   return (
     <React.StrictMode>
       <div className="a">
-        aaa
-    </div>
-      <TestPage></TestPage>
+        {window.APP_CONFIG.aaa}
+      </div>
+      <TestPage />
     </React.StrictMode>
   )
 }

@@ -16,6 +16,7 @@
     }
   },
   "includes": [
-    "./declarations/externals.d.ts"
+    "./declarations/externals.d.ts",
+    "./declarations/global.d.ts"
   ]
 }

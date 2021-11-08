@@ -10,6 +10,7 @@ import { sassLoader, sassModuleLoader } from './loaders/sass-loader';
 import LOADER_IMG from './loaders/img-loader';
 import LOADER_FONT from './loaders/font-loader';
 import { MiniCssExtractPlugin } from './plugins/plugin-mini-css-extract';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 const cwd = process.cwd();
 
 // import SpeedMesuarePlugin from 'speed-measure-webpack-plugin';
@@ -57,7 +58,11 @@ const devServerConfig = {
 }
 
 const DOC_TITLE = 'title';
-
+const COPY_CONFIG = [
+  { from: path.resolve(cwd, 'public/imgs'), to: path.resolve(cwd, 'build/imgs') },
+  { from: path.resolve(cwd, 'public/config'), to: path.resolve(cwd, 'build/config') },
+]
+const CONFIG_PATH = ENV === EnumEnvironment.DEVELOPMENT ? '/config/config.dev.js' : '/config/config.prod.js';
 
 const config = {
   entry: {
@@ -69,8 +74,12 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: COPY_CONFIG
+    }),
     new HtmlWebpackPlugin({
       title: ENV === EnumEnvironment.DEVELOPMENT ? `${DOC_TITLE}-${ENV}` : DOC_TITLE,
+      configPath: CONFIG_PATH,
       template: path.resolve(cwd, './public/index.html'),
       publicPath: '/',
       filename: 'index.html',
