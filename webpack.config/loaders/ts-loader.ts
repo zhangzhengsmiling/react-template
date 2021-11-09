@@ -6,9 +6,19 @@ const loader = {
   include: path.resolve(cwd, 'src'),
   use: [
     {
-      loader: 'ts-loader',
+      loader: 'cache-loader',
+    },
+    // {
+    //   loader: 'esbuild-loader',
+    //   options: {
+    //     loader: 'tsx',
+    //     target: 'es2015',
+    //   },
+    // },
+    {
+      loader: 'babel-loader',
       options: {
-        transpileOnly: true,
+        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
       }
     }
   ]

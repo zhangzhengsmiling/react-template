@@ -5,6 +5,7 @@ const TestPage = () => {
   return (
     <div>
       this is test page...
+      <img src="/imgs/logo.png" alt=""/>
     </div>
   )
 }

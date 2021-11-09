@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "target": "es5",                                     /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "jsx": "react",                                      /* Specify what JSX code is generated. */
     "experimentalDecorators": true,                      /* Enable experimental support for TC39 stage 2 draft decorators. */
@@ -15,6 +16,7 @@
     }
   },
   "includes": [
-    "./declarations/externals.d.ts"
+    "./declarations/externals.d.ts",
+    "./declarations/global.d.ts"
   ]
 }
