@@ -57,6 +57,15 @@ const mergeEntryConfig = (entryConfig?: any) => {
   return entryConfig || DEFAULT_ENTRY_CONFIG;
 }
 
+
+const mergeOutputConfig = (outputConfig?: any) => {
+  const DEFAULT_OUTPUUT_CONFIG = {
+    path: path.resolve(cwd, './build'),
+    filename: '[name].bundle.js',
+  }
+  return outputConfig || DEFAULT_OUTPUUT_CONFIG;
+}
+
 const ENV = getENV(process.env as any)
 
 const devServerConfig: Configuration = {
@@ -88,6 +97,21 @@ console.log(pkg)
 //
 // }
 
+const decratorKeyForList = (key: string) => {
+  return {
+    addKey: (list: any  []) => {
+      list.forEach((item, index) => {
+        item[key] = index;
+      });
+    },
+    removeKey: (list: any []) =>{
+      list.forEach(item => {
+        delete item[key];
+      });
+    }
+  }
+}
+
 const DOC_TITLE = 'title';
 const COPY_CONFIG = [
   { from: path.resolve(cwd, 'public/imgs'), to: path.resolve(cwd, 'build/imgs') },
@@ -97,10 +121,7 @@ const CONFIG_PATH = ENV === EnumEnvironment.DEVELOPMENT ? '/config/config.dev.js
 
 const config = {
   entry: mergeEntryConfig(),
-  output: {
-    path: path.resolve(cwd, './build'),
-    filename: '[name].bundle.js',
-  },
+  output: mergeOutputConfig(),
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
@@ -119,7 +140,7 @@ const config = {
   ],
   resolve: {
     // ！important 动态配置，不必要的后缀配置不要加，出现频率高的后缀往前提
-    extensions: ['.ts', '.tsx', '.js', 'jsx', '.html', '.json', '.scss', '.sass', '.less'],
+    extensions: ['.ts', '.tsx', '.js', 'jsx', '.less', '.json', '.scss', '.sass'],
     alias: {
       "@": path.resolve(cwd, './src')
     }
@@ -140,17 +161,15 @@ const config = {
 }
 
 if (ENV === EnumEnvironment.DEVELOPMENT) {
-  (config as any).devServer = mergeDevServerConfig(devServerConfig);
+  (config as any).devServer = mergeDevServerConfig();
 }
 
 if (ENV === EnumEnvironment.PRODUCTION) {
   config.output.filename = '[name].bundle.[chunkhash:8].js';
 }
 
-config.module.rules = config.module.rules.map((item: any, index: number) => {
-  item._key = index;
-  return item;
-})
+const { addKey, removeKey } = decratorKeyForList('_key');
+addKey(config.module.rules);
 
 // merge config
 if (typeof CustomConfig === 'object') {
@@ -160,9 +179,6 @@ if (typeof CustomConfig === 'object') {
   console.log('call fn...')
 }
 
-config.module.rules = config.module.rules.map((item: any) => {
-  delete item._key
-  return item;
-})
+removeKey(config.module.rules);
 
 export default config;
