@@ -2,6 +2,7 @@ import path from 'path';
 const cwd = process.cwd();
 
 const loader = {
+  _key: 'aaa',
   test: /\.(js|jsx)$/,
   include: path.resolve(cwd, 'src'),
   use: [

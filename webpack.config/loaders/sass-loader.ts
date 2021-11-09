@@ -2,7 +2,7 @@ import path from 'path';
 import { loader } from '../plugins/plugin-mini-css-extract';
 const cwd = process.cwd();
 
-export const sassLoader = {
+export const LOADER_SASS = {
   test: /(?<!\.module)\.(scss|sass)/,
   include: path.resolve(cwd, 'src'),
   use: [
@@ -14,7 +14,7 @@ export const sassLoader = {
   ]
 }
 
-export const sassModuleLoader = {
+export const LOADER_SASS_MODULE = {
   test: /\.module\.(sass|scss)$/,
   include: path.resolve(cwd, 'src'),
   use: [
