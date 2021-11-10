@@ -2,7 +2,7 @@ import path from 'path';
 import { loader } from '../plugins/plugin-mini-css-extract';
 const cwd = process.cwd();
 
-export const lessLoader = {
+export const LOADER_LESS = {
   test: /(?<!\.module)\.less/,
   include: path.resolve(cwd, 'src'),
   use: [
@@ -14,7 +14,7 @@ export const lessLoader = {
   ]
 }
 
-export const lessModuleLoader = {
+export const LOADER_LESS_MODULE = {
   test: /\.module\.less$/,
   include: path.resolve(cwd, 'src'),
   use: [
