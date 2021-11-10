@@ -1,3 +1,5 @@
-export default (webpackConfig: any, external: any) => {
-  console.log(webpackConfig.module.rules, external);
+import { Configuration } from 'webpack'
+
+export default (webpackConfig: Configuration, env: any) => {
+  return webpackConfig;
 }

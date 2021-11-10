@@ -10,8 +10,9 @@ import LOADER_FONT from './loaders/font-loader';
 import { MiniCssExtractPlugin } from './plugins/plugin-mini-css-extract';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 const cwd = process.cwd();
-import { Configuration } from 'webpack-dev-server';
-import CustomConfig from './custom.webpack.config';
+import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
+import customConfig from './custom.webpack.config';
+import merge from 'webpack-merge';
 
 // import SpeedMesuarePlugin from 'speed-measure-webpack-plugin';
 // const smp = new SpeedMesuarePlugin();
@@ -30,7 +31,7 @@ const getENV = (environment: INodeEnv): EnumEnvironment => {
   return environment.NODE_ENV as EnumEnvironment;
 }
 
-const mergeDevServerConfig = (devServerConfig: Configuration = {}): Configuration => {
+const mergeDevServerConfig = (devServerConfig: DevServerConfiguration = {}): DevServerConfiguration => {
   const DEFAULT_HOST = '127.0.0.1';
   const DEFAULT_PORT = 8000;
   return {
@@ -106,7 +107,7 @@ const COPY_CONFIG = [
 ]
 const CONFIG_FILE_PATH = getConfigFilePath(ENV);
 
-const config = {
+const config: any = {
   entry: mergeEntryConfig(),
   output: mergeOutputConfig(ENV)(),
   plugins: [
@@ -145,22 +146,22 @@ const config = {
     ]
   },
   stats: 'minimal',
-}
+};
 
 if (ENV === EnumEnvironment.DEVELOPMENT) {
   (config as any).devServer = mergeDevServerConfig();
 }
 
 const { addKey, removeKey } = decratorKeyForList('_key');
-addKey(config.module.rules);
 
 // merge config
-if (typeof CustomConfig === 'object') {
-  console.log('call webpack merge');
-} else if (typeof CustomConfig === 'function') {
-  CustomConfig(config, { env: process.env })
+let _config = null;
+if (typeof customConfig === 'object') {
+  _config = merge({}, config, customConfig);
+} else if (typeof customConfig === 'function') {
+  addKey(config.module.rules);
+  _config = customConfig(config, { env: process.env })
+  removeKey(config.module.rules);
 }
 
-removeKey(config.module.rules);
-
-export default config;
+export default _config;
