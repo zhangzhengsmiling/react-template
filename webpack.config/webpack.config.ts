@@ -13,6 +13,8 @@ const cwd = process.cwd();
 import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 import customConfig from './custom.webpack.config';
 import merge from 'webpack-merge';
+import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin';
+import TerserWebpackPlugin from 'terser-webpack-plugin';
 
 // import SpeedMesuarePlugin from 'speed-measure-webpack-plugin';
 // const smp = new SpeedMesuarePlugin();
@@ -146,6 +148,12 @@ const config: any = {
     ]
   },
   stats: 'minimal',
+  optimization: {
+  minimizer: [
+    new TerserWebpackPlugin(),
+    new CssMinimizerWebpackPlugin(),
+  ],
+},
 };
 
 if (ENV === EnumEnvironment.DEVELOPMENT) {
