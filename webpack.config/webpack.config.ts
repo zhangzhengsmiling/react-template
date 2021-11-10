@@ -168,7 +168,7 @@ if (typeof customConfig === 'object') {
   _config = merge({}, config, customConfig);
 } else if (typeof customConfig === 'function') {
   addKey(config.module.rules);
-  _config = customConfig(config, { env: process.env })
+  _config = (customConfig as any)(config, { env: process.env })
   removeKey(config.module.rules);
 }
 

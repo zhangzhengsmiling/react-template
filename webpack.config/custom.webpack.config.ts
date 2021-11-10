@@ -1,5 +1,7 @@
 import { Configuration } from 'webpack'
 
-export default (webpackConfig: Configuration, env: any) => {
+const configuration = (webpackConfig: Configuration) => {
   return webpackConfig;
 }
+
+export default configuration;
