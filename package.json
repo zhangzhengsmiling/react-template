@@ -23,15 +23,18 @@
     "babel-loader": "^8.2.3",
     "cache-loader": "^4.1.0",
     "clean-webpack-plugin": "^4.0.0",
+    "commitizen": "^4.2.4",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.0",
     "css-minimizer-webpack-plugin": "^3.1.2",
+    "cz-conventional-changelog": "^3.3.0",
     "esbuild-loader": "^2.16.0",
     "eslint": "^8.2.0",
     "eslint-plugin-react": "^7.27.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "lint-staged": "^12.1.2",
@@ -62,7 +65,14 @@
     "react-dom": "^17.0.2"
   },
   "lint-staged": {
-    "*.[tj]s?(x)": ["eslint --fix"]
+    "*.[tj]s?(x)": [
+      "eslint --fix"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "browserslist": [
     "> 1%",
