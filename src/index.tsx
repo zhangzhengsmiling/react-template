@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './a.less';
 import TestPage from '@/pages/TestPage';
@@ -12,10 +12,10 @@ const App = () => {
       </div>
       <TestPage />
     </React.StrictMode>
-  )
-}
+  );
+};
 
 ReactDOM.render(
   <App />,
   document.querySelector('#root'),
-)
+);
