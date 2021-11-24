@@ -3,7 +3,7 @@ import './style';
 
 const TestPage = () => {
   return (
-    <div>
+    <div className="test-page">
       this is test page...
       <img src="/imgs/logo.png" alt=""/>
     </div>
