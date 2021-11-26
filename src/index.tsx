@@ -4,18 +4,12 @@ import './a.less';
 import TestPage from '@/pages/TestPage';
 
 const App = () => {
-
   return (
     <React.StrictMode>
-      <div className="a">
-        {window.APP_CONFIG.aaa}
-      </div>
+      <div className='a'>{window.APP_CONFIG.aaa}</div>
       <TestPage />
     </React.StrictMode>
   );
 };
 
-ReactDOM.render(
-  <App />,
-  document.querySelector('#root'),
-);
+ReactDOM.render(<App />, document.querySelector('#root'));
