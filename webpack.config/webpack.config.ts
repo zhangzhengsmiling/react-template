@@ -31,82 +31,90 @@ const getENV = (environment: INodeEnv): EnumEnvironment => {
   const DEFAULT_ENV = EnumEnvironment.PRODUCTION;
   if (environment.NODE_ENV === undefined) return DEFAULT_ENV;
   return environment.NODE_ENV as EnumEnvironment;
-}
+};
 
-const mergeDevServerConfig = (devServerConfig: DevServerConfiguration = {}): DevServerConfiguration => {
+const mergeDevServerConfig = (
+  devServerConfig: DevServerConfiguration = {},
+): DevServerConfiguration => {
   const DEFAULT_HOST = '127.0.0.1';
   const DEFAULT_PORT = 8000;
   return {
     host: DEFAULT_HOST,
     port: DEFAULT_PORT,
     ...devServerConfig,
-  }
-}
+  };
+};
 
 const mergeEntryConfig = (entryConfig?: any) => {
   const DEFAULT_ENTRY_CONFIG = {
     app: path.resolve(cwd, './src/index.tsx'),
   };
   return entryConfig || DEFAULT_ENTRY_CONFIG;
-}
+};
 
-const mergeOutputConfig =  (env: EnumEnvironment) => (outputConfig?: any) => {
+const mergeOutputConfig = (env: EnumEnvironment) => (outputConfig?: any) => {
   const DEFAULT_OUTPUT_CONFIG = {
     path: path.resolve(cwd, './build'),
     filename: getBundledFilename(env),
-  }
+  };
   return outputConfig || DEFAULT_OUTPUT_CONFIG;
-}
+};
 
-const ENV = getENV(process.env as any)
+const ENV = getENV(process.env as any);
 
 const decratorKeyForList = (key: string) => {
   return {
-    addKey: (list: any  []) => {
+    addKey: (list: any[]) => {
       list.forEach((item, index) => {
         item[key] = index;
       });
     },
-    removeKey: (list: any []) =>{
-      list.forEach(item => {
+    removeKey: (list: any[]) => {
+      list.forEach((item) => {
         delete item[key];
       });
-    }
-  }
-}
+    },
+  };
+};
 
 const getBundledFilename = (env: EnumEnvironment) => {
-  switch(env) {
+  switch (env) {
     case EnumEnvironment.DEVELOPMENT:
       return '[name].bundle.js';
     case EnumEnvironment.PRODUCTION:
-      return '[name].bundle.[chunkhash:8].js'
+      return '[name].bundle.[chunkhash:8].js';
   }
-}
+};
 
 const getConfigFilePath = (env: EnumEnvironment) => {
-  switch(env) {
+  switch (env) {
     case EnumEnvironment.DEVELOPMENT:
       return '/config/config.dev.js';
     case EnumEnvironment.PRODUCTION:
       return '/config/config.prod.js';
   }
-}
+};
 
 const getCssExtractFileName = (env: EnumEnvironment) => {
-  switch(env) {
+  switch (env) {
     case EnumEnvironment.DEVELOPMENT:
       return '[name].css';
     case EnumEnvironment.PRODUCTION:
       return '[name].[chunkhash:8].css';
   }
-}
+};
 
 const DOC_TITLE = 'title';
 const COPY_CONFIG = [
-  { from: path.resolve(cwd, 'public/imgs'), to: path.resolve(cwd, 'build/imgs') },
-  { from: path.resolve(cwd, 'public/config'), to: path.resolve(cwd, 'build/config') },
-]
+  {
+    from: path.resolve(cwd, 'public/imgs'),
+    to: path.resolve(cwd, 'build/imgs'),
+  },
+  {
+    from: path.resolve(cwd, 'public/config'),
+    to: path.resolve(cwd, 'build/config'),
+  },
+];
 const CONFIG_FILE_PATH = getConfigFilePath(ENV);
 
 const config: any = {
@@ -115,7 +123,7 @@ const config: any = {
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
-      patterns: COPY_CONFIG
+      patterns: COPY_CONFIG,
     }),
     new HtmlWebpackPlugin({
       title: DOC_TITLE,
@@ -126,14 +134,14 @@ const config: any = {
     }),
     new MiniCssExtractPlugin({
       filename: getCssExtractFileName(ENV),
-    })
+    }),
   ],
   resolve: {
     // ！important 动态配置，不必要的后缀配置不要加，出现频率高的后缀往前提
     extensions: ['.ts', '.tsx', '.js', 'jsx', '.less', '.json', '.scss', '.sass'],
     alias: {
-      "@": path.resolve(cwd, './src')
-    }
+      '@': path.resolve(cwd, './src'),
+    },
   },
   module: {
     rules: [
@@ -145,15 +153,12 @@ const config: any = {
       LOADER_SASS_MODULE,
       LOADER_IMG,
       LOADER_FONT,
-    ]
+    ],
   },
   stats: 'minimal',
   optimization: {
-  minimizer: [
-    new TerserWebpackPlugin(),
-    new CssMinimizerWebpackPlugin(),
-  ],
-},
+    minimizer: [new TerserWebpackPlugin(), new CssMinimizerWebpackPlugin()],
+  },
 };
 
 if (ENV === EnumEnvironment.DEVELOPMENT) {
@@ -168,7 +173,7 @@ if (typeof customConfig === 'object') {
   _config = merge({}, config, customConfig);
 } else if (typeof customConfig === 'function') {
   addKey(config.module.rules);
-  _config = (customConfig as any)(config, { env: process.env })
+  _config = (customConfig as any)(config, { env: process.env });
   removeKey(config.module.rules);
 }
 

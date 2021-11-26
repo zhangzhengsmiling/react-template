@@ -1,4 +1,3 @@
-
 var APP_CONFIG = {
-  aaa: 'prod'
-}
+  aaa: 'prod',
+};

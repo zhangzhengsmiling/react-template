@@ -8,11 +8,11 @@ export const LOADER_SASS = {
   use: [
     { loader },
     {
-      loader: 'css-loader'
+      loader: 'css-loader',
     },
     { loader: 'sass-loader' },
-  ]
-}
+  ],
+};
 
 export const LOADER_SASS_MODULE = {
   test: /\.module\.(sass|scss)$/,
@@ -23,8 +23,8 @@ export const LOADER_SASS_MODULE = {
       loader: 'css-loader',
       options: {
         modules: true,
-      }
+      },
     },
     { loader: 'sass-loader' },
-  ]
-}
+  ],
+};

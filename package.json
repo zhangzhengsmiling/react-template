@@ -63,8 +63,7 @@
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config/webpack.config.ts",
     "check-types": "tsc",
     "lint": "lint-staged",
-    "lint-all": "eslint src --ext .ts,.tsx,.js,.jsx",
-    "prettier": "prettier --check ."
+    "lint-all": "eslint src --ext .ts,.tsx,.js,.jsx"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -72,7 +71,9 @@
   },
   "lint-staged": {
     "*.[tj]s?(x)": [
-      "eslint --fix"
+      "eslint --fix",
+      "prettier --write",
+      "git add ."
     ]
   },
   "config": {
