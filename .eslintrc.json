@@ -6,7 +6,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
     ],
     "settings": {
       "react": {
@@ -23,11 +24,12 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
       "react/jsx-uses-react": "error",
       "react/jsx-uses-vars": "error",
-      "semi": "error"
+      "prettier/prettier": "error"
     }
 }
