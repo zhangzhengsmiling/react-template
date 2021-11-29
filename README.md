@@ -1,3 +1,5 @@
+<!-- @format -->
+
 ### ts build time record
 
 Cache-loader for ts-loader

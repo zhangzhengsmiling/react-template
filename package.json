@@ -33,6 +33,8 @@
     "cz-conventional-changelog": "^3.3.0",
     "esbuild-loader": "^2.16.0",
     "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
@@ -42,6 +44,7 @@
     "lint-staged": "^12.1.2",
     "mini-css-extract-plugin": "^2.4.4",
     "postcss-loader": "^6.2.0",
+    "prettier": "^2.5.0",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
     "speed-measure-webpack-plugin": "^1.5.0",
@@ -60,7 +63,7 @@
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config/webpack.config.ts",
     "check-types": "tsc",
     "lint": "lint-staged",
-    "lint-all": "eslint src --ext .ts,.tsx,.js,.jsx --fix"
+    "lint-all": "eslint src --ext .ts,.tsx,.js,.jsx"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -68,7 +71,9 @@
   },
   "lint-staged": {
     "*.[tj]s?(x)": [
-      "eslint --fix"
+      "eslint --fix",
+      "prettier --write",
+      "git add ."
     ]
   },
   "config": {

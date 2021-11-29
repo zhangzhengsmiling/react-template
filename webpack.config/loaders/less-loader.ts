@@ -8,11 +8,11 @@ export const LOADER_LESS = {
   use: [
     { loader },
     {
-      loader: 'css-loader'
+      loader: 'css-loader',
     },
     { loader: 'less-loader' },
-  ]
-}
+  ],
+};
 
 export const LOADER_LESS_MODULE = {
   test: /\.module\.less$/,
@@ -23,8 +23,8 @@ export const LOADER_LESS_MODULE = {
       loader: 'css-loader',
       options: {
         modules: true,
-      }
+      },
     },
     { loader: 'less-loader' },
-  ]
-}
+  ],
+};
