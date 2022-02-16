@@ -1,6 +1,6 @@
 {
   "name": "react-template",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -48,6 +48,7 @@
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
     "speed-measure-webpack-plugin": "^1.5.0",
+    "standard-version": "^9.3.2",
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.2.5",
     "ts-node": "^10.4.0",
@@ -63,7 +64,8 @@
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config/webpack.config.ts",
     "check-types": "tsc",
     "lint": "lint-staged",
-    "lint-all": "eslint src --ext .ts,.tsx,.js,.jsx"
+    "lint-all": "eslint src --ext .ts,.tsx,.js,.jsx",
+    "release": "yarn standard-version"
   },
   "dependencies": {
     "react": "^17.0.2",
