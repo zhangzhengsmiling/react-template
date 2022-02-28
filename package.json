@@ -6,17 +6,13 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
-    "@ice-age/ice": "^1.0.5",
+    "@ice-age/ice": "^1.0.7",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.2.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.27.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "prettier": "^2.5.0"
@@ -26,7 +22,7 @@
     "build": "ice build",
     "check-types": "tsc",
     "lint": "lint-staged",
-    "lint-all": "eslint src --ext .ts,.tsx,.js,.jsx"
+    "lint-all": "ice lint src --ext .ts,.tsx,.js,.jsx"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -34,7 +30,7 @@
   },
   "lint-staged": {
     "*.[tj]s?(x)": [
-      "eslint --fix",
+      "ice lint --fix",
       "prettier --write",
       "git add ."
     ]
