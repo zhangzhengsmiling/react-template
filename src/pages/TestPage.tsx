@@ -1,5 +1,6 @@
 import React from 'react';
 import './style';
+import '../a.css';
 
 const TestPage = () => {
   return (
